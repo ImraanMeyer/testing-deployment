@@ -1,0 +1,28 @@
+[
+   {
+    "name": "Avengers: Endgame",
+    "genre" :"Adventure",
+    "format": "Blu-Ray",
+    "running_time": "180 Minutes",
+    "age_restriction": "PG 10"
+    },
+
+   {
+
+    "name": "Fight Club",
+    "genre" :"Action",
+    "format": "DVD",
+    "running_time": "151 Minutes",
+    "age_restriction": "R 18"
+   },
+
+
+  {
+    "name": "Die Hard",
+    "genre" :"Action",
+    "format": "DVD",
+    "running_time": "132 Minutes",
+    "age_restriction": "R 18"
+  }
+  
+]

@@ -13,7 +13,7 @@ const port = process.env.PORT || 3001;
 
 // Serve static files from the React app
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Defining the use of my body-parse to handle HTML content 
 
@@ -42,7 +42,7 @@ const movieRouter = require('./routes/movies_router')
 
 // Defining the Link to Our API
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.send('Welcome to the MoviesDB Server!')
 })
 

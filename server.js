@@ -9,18 +9,18 @@ const favicon = require('serve-favicon');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
-const port = process.env.PORT || 3001;
 
-// Serve static files from the React app
+// Use env config
+require('dotenv').config()
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+// app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Defining the use of my body-parse to handle HTML content 
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
- 
+
 
 // Securing My Application and defining add ins to use 
 
@@ -42,14 +42,24 @@ const movieRouter = require('./routes/movies_router')
 
 // Defining the Link to Our API
 
-app.get('/*', (req, res) => {
-    res.send('Welcome to the MoviesDB Server!')
-})
+// app.get('/*', (req, res) => {
+//     res.send('Welcome to the MoviesDB Server!')
+// })
 
 
 app.use('/api', movieRouter)
 
-//  Listening to Port 3001 defined above 
 
-app.listen(port)
-console.log(`Server running on port ${port}`)
+// Serve static files from the React app
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+    
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
+
+
+//  Listening to Port 3001 
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Server running on port ${port}`))

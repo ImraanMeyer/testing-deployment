@@ -205,4 +205,4 @@ export default class MoviesList extends Component {
     }
 }
 
-//export default MoviesList
+// export default MoviesList

@@ -3,11 +3,13 @@
 const mongoose = require('mongoose')
 
 mongoose
-    //.connect('mongodb://127.0.0.1:27017/cinema', { useNewUrlParser: true })
-    .connect(`mongodb+srv://admin:qu16x3BAYsLFdD9r@cluster0-gwrs4.gcp.mongodb.net/cinema?retryWrites=true&w=majority`)
-    .catch(e => {
-        console.error('Connection error', e.message)
+//.connect('mongodb://127.0.0.1:27017/cinema', { useNewUrlParser: true })
+    .connect(process.env.DATABASE, { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
     })
+    .then(() => console.log('DB connected...'))
+    .catch(e => console.error('Connection error', e.message))
 
 const db = mongoose.connection
 
